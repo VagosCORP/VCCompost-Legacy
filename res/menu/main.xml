@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    <item
+        android:id="@+id/Act_dat"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="@string/A_Dat"/>
+    
+    <item
+        android:id="@+id/Chan_ser"
+        android:orderInCategory="2"
+        android:showAsAction="never"
+        android:title="@string/C_Server"/>
+    
+    <item
+        android:id="@+id/load_file"
+        android:orderInCategory="3"
+        android:showAsAction="never"
+        android:title="@string/Load_Data"/>
+    
+<!--     <item -->
+<!--         android:id="@+id/erase_file" -->
+<!--         android:orderInCategory="4" -->
+<!--         android:showAsAction="never" -->
+<!--         android:title="@string/Erase_Data"/> -->
+    
+    <item
+        android:id="@+id/Reset_COM"
+        android:orderInCategory="5"
+        android:showAsAction="never"
+        android:title="@string/Reset_Comunication"/>
+    
+<!--             android:onClick="load_File" -->
+
+</menu>

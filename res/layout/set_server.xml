@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SS_LYT"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:context=".Set_Server" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1" >
+
+        <EditText
+            android:id="@+id/Server_IP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/Server_IP"
+            android:inputType="number|text" />
+
+        <EditText
+            android:id="@+id/Server_Port"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Server_Port"
+            android:inputType="number" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/Change"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:onClick="Cambiar"
+        android:text="@string/OK" />
+
+</LinearLayout>

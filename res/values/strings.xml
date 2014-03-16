@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VCCompost</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="set_server">Cambiar Servidor</string>
+    <string name="title_activity_dat_vag">Dat_vag</string>
+    
+    <string name="Hora">Fecha de Muestra</string>
+    <string name="Temp1">Temp1</string>
+    <string name="Temp2">Temp2</string>
+    <string name="Temp3">Temp3</string>
+    <string name="Temp4">Temp4</string>
+    
+    <string name="Server_IP">10.0.0.6</string>
+    <string name="Server_Port">2000</string>
+    <string name="OK">Aceptar</string>
+    
+    <string name="gru_donde">posición de la grua</string>
+    <string name="gru_llego">llegó a la posición</string>
+    <string name="gru_hora">hora del movimiento de la grua</string>
+    <string name="Ser_Dat">20.0.0.6:2000</string>
+    
+    <string name="A_Dat">Actualizar Datos</string>
+    <string name="C_Server">Cambiar Servidor</string>
+    <string name="Load_Data">Cargar Datos Archivados</string>
+    <string name="Erase_Data">Borrar Datos Archivados</string>
+    <string name="Reset_Comunication">Resetear Comunicación</string>
+
+</resources>
