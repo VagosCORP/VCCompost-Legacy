@@ -230,7 +230,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 			if (comunic != null) {
 				comunic.Detener_Actividad();
 			}
-			comunic = new Comunic(serverip, serverport, context);
+			comunic = new Comunic(context, serverip, serverport);
 			comunic.setConnectionListener(new OnConnectionListener() {
 
 				@Override
@@ -252,7 +252,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 
 	public void iniciar_Server() {// Inicia un servidor a la espera de conexión
 		Log.d("Server", "Iniciar Server");
-		comunic = new Comunic(serverport, context);
+		comunic = new Comunic(context, serverport);
 		comunic.setConnectionListener(new OnConnectionListener() {
 
 			@Override
