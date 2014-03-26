@@ -7,9 +7,6 @@ import java.util.Locale;
 
 import android.os.AsyncTask;
 
-/**
- * The Class ProcesarDatos.
- */
 public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 
 	int pgru_donde;

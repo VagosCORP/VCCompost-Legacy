@@ -6,26 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-/**
- * The Class Set_Server.
- */
 public class Set_Server extends Activity {
 
-	/** The Server_ ip. */
 	EditText Server_IP;
-	
-	/** The Server_ port. */
 	EditText Server_Port;
-	
-	/** The ip. */
 	String IP;
-	
-	/** The Port. */
 	int Port;
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,9 +24,6 @@ public class Set_Server extends Activity {
 		Server_Port = (EditText) findViewById(R.id.Server_Port);
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onStart()
-	 */
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -47,11 +31,6 @@ public class Set_Server extends Activity {
 		Server_Port.setText(Port + "");
 	}
 
-	/**
-	 * Cambiar.
-	 *
-	 * @param view the view
-	 */
 	public void Cambiar(View view) {
 		final String SIP = Server_IP.getText().toString();
 		final int SPort = Integer.parseInt(Server_Port.getText().toString());
@@ -62,9 +41,6 @@ public class Set_Server extends Activity {
 		finish();
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onDestroy()
-	 */
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

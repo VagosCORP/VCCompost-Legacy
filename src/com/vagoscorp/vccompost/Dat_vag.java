@@ -19,118 +19,47 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-/**
- * The Class Dat_vag.
- */
 public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 
-	/** The Constant NVag. */
 	public static final String NVag = "nvag";
 	
-	/** The sfv_vag. */
 	SurfaceView sfv_vag;
-	
-	/** The sfv_jab. */
 	SurfaceView sfv_jab;
-	
-	/** The vhora. */
 	TextView vhora;
-	
-	/** The temp1. */
 	TextView temp1;
-	
-	/** The temp2. */
 	TextView temp2;
-	
-	/** The temp3. */
 	TextView temp3;
-	
-	/** The temp4. */
 	TextView temp4;
-	
-	/** The canvas. */
 	Canvas canvas;
-	
-	/** The jabcanvas. */
 	Canvas jabcanvas;
-	
-	/** The vag holder. */
 	SurfaceHolder vagHolder;
-	
-	/** The jab holder. */
 	SurfaceHolder jabHolder;
-	
-	/** The thread. */
 	Thread thread;
-	
-	/** The jaba. */
 	Paint jaba = new Paint();
-	
-	/** The frio. */
 	Paint frio = new Paint();
-	
-	/** The bueno. */
 	Paint bueno = new Paint();
-	
-	/** The tibio. */
 	Paint tibio = new Paint();
-	
-	/** The caliente. */
 	Paint caliente = new Paint();
-	
-	/** The touch. */
 	Paint touch = new Paint();
 	
-	/** The x. */
 	float x = 0;
-	
-	/** The y. */
 	float y = 0;
-	
-	/** The runn. */
 	boolean runn = false;
-	
-	/** The vagon. */
 	Vagon vagon;
-	
-	/** The px. */
 	int[] px;
-	
-	/** The py. */
 	int[] py;
-	
-	/** The hora. */
 	String[] hora;
-	
-	/** The t1. */
 	int[] t1;
-	
-	/** The t2. */
 	int[] t2;
-	
-	/** The t3. */
 	int[] t3;
-	
-	/** The t4. */
 	int[] t4;
-	
-	/** The v x. */
 	float vX;
-	
-	/** The v y. */
 	float vY;
-	
-	/** The width. */
 	float width;
-	
-	/** The height. */
 	float height;
 	
 	BroadcastReceiver receiver;
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -212,9 +141,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		super.onStop();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
 	@Override
 	public void run() {
 		boolean jya = false;
@@ -262,11 +188,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		}
 	}
 
-	/**
-	 * Drawtouch.
-	 *
-	 * @param canvas the canvas
-	 */
 	public void drawtouch(Canvas canvas) {
 		if(x <= 0)
 			x = 0;
@@ -279,14 +200,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		canvas.drawCircle(x, y, 50, touch);
 	}
 	
-	/**
-	 * Drawpoint.
-	 *
-	 * @param canvas the canvas
-	 * @param cx the cx
-	 * @param cy the cy
-	 * @param temp the temp
-	 */
 	public void drawpoint(Canvas canvas, int cx, int cy, int temp) {
 		Paint paint = null;
 		if(temp < 35)
@@ -300,9 +213,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		canvas.drawCircle((float)vX*cx, (float)vY*cy, 20, paint);
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onPause()
-	 */
 	@Override
 	protected void onPause() {
 		runn = false;
@@ -315,9 +225,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		super.onPause();
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onResume()
-	 */
 	@Override
 	protected void onResume() {
 		runn = true;
@@ -326,18 +233,12 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		super.onResume();
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.dat_vag, menu);
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -349,9 +250,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onBackPressed()
-	 */
 	@Override
 	public void onBackPressed() {
 		finish();
@@ -359,9 +257,6 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		super.onBackPressed();
 	}
 
-	/* (non-Javadoc)
-	 * @see android.view.View.OnTouchListener#onTouch(android.view.View, android.view.MotionEvent)
-	 */
 	@Override
 	public boolean onTouch(View v, MotionEvent me) {
 		x = me.getX();

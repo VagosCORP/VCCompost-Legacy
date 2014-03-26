@@ -32,9 +32,6 @@ import android.widget.Toast;
 
 import com.vagoscorp.vccompost.ProcesarDatos.OnDataProcessingListener;
 
-/**
- * The Class MainService.
- */
 public class MainService extends Service implements OnDataProcessingListener,
 		OnComunicationListener {
 
