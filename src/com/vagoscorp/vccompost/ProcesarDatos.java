@@ -98,7 +98,7 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 		String resumen1 = "Temperatura Mínima";
 		String resumen2 = "Temperatura Máxima";
 		String resumen3 = "Resumen de Estado";
-		// String dat = "1$2$20:20:20$10$<20>$<30>$<40>&";
+		// String dat = "1;2;20:20:20;<10>;<20>;<30>;<40>&";
 		String[] jabalina = datos.split("&");
 		int cont = 0;
 		int max = 0;

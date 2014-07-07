@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import libraries.vagoscorp.comunication.Eventos.OnComunicationListener;
-import libraries.vagoscorp.comunication.Eventos.OnConnectionListener;
-import libraries.vagoscorp.comunication.Eventos.OnTimeOutListener;
-import libraries.vagoscorp.comunication.android.Comunic;
-import libraries.vagoscorp.comunication.android.TimeOut;
+import vclibs.communication.Eventos.OnComunicationListener;
+import vclibs.communication.Eventos.OnConnectionListener;
+import vclibs.communication.Eventos.OnTimeOutListener;
+import vclibs.communication.android.Comunic;
+import vclibs.communication.android.TimeOut;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
