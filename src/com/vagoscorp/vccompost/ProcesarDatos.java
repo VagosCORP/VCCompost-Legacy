@@ -11,7 +11,6 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 
 	int pgru_donde;
 	int pgru_llego;
-//	String pgru_hora;
 	Vagon tempvag;
 	String[] Tn;
 	String data;
@@ -24,9 +23,7 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 	
 	// ///////////////Código para Listener/////////////////
 	OnDataProcessingListener dataPListener;
-
-	public interface OnDataProcessingListener {
-		
+	public interface OnDataProcessingListener {	
 		public final int FALLA = 0;
 		public final int VAGON = 1;
 		public final int GRUA = 2;
@@ -35,13 +32,11 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 		public void onDataProcessingStarted();
 		public void onDataProcessingEnded(int resp);
 	}
-
 	public void setDataProcessingEndListener(
 			OnDataProcessingListener onDataPListener) {
 		dataPListener = onDataPListener;
 	}
 	// ///////////////Código para Listener/////////////////
-
 	public ProcesarDatos() {
 		
 	}
@@ -141,10 +136,10 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 		if(min >= 35 && max <= 40) {
 			resumen3 = "Condiciones en Rango";
 			resumen = MainService.BUENO;
-		}else if(max > 40 && max <=60) {
+		}else if(max > 40 && max <= 60) {
 			resumen3 = "Condiciones poco Favorables";
 			resumen = MainService.TIBIO;
-		}else if(max >60) {
+		}else if(max > 60) {
 			resumen3 = "PELIGRO! Procesos Anaerobicos";
 			resumen = MainService.CALIENTE;
 		}else if(min < 35) {
@@ -170,8 +165,6 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 		tempvag.resumen1 = resumen1;
 		tempvag.resumen2 = resumen2;
 		tempvag.resumen3 = resumen3;
-		// MainServices.vtext_str[nvag] = t1+" "+t2+" "+t3+" "+t4;
-		// MainServices.upd_vags[nvag] = 1;
 	}
 
 	private void Trab_pgru(String datos) {
@@ -201,7 +194,6 @@ public class ProcesarDatos extends AsyncTask<Void, Integer, Integer> {
 
 	@Override
 	protected void onPreExecute() {
-		// rData = "";
 		processingData = true;
 		if (dataPListener != null)
 			dataPListener.onDataProcessingStarted();

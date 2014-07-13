@@ -32,8 +32,7 @@ import android.widget.Toast;
 
 import com.vagoscorp.vccompost.ProcesarDatos.OnDataProcessingListener;
 
-public class MainService extends Service implements OnDataProcessingListener,
-		OnComunicationListener {
+public class MainService extends Service implements OnDataProcessingListener {
 
 	// /////////////////Constantes///////////////////
 	public static final int PASO_CLIENT = 1;
@@ -50,9 +49,9 @@ public class MainService extends Service implements OnDataProcessingListener,
 	public static final int BUENO = 2;
 	public static final int TIBIO = 3;
 	public static final int CALIENTE = 4;
-	public static final String defIP = "10.0.0.4";
-	public static final String defHora = "01-01-2014 12:30:20";
 	public static final int defPort = 2000;
+	public static final String defIP = "20.0.0.4";
+	public static final String defHora = "01-01-2014 12:30:20";
 	public static final String SI = "SIP";
 	public static final String SP = "SPort";
 	public static final String Hora = "Hora";
@@ -92,6 +91,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 	List<String> filen;
 
 	public MainService() {
+		
 	}
 
 	void informar(String info, boolean toast) {// Debug: Imprimir mensaje
@@ -137,9 +137,6 @@ public class MainService extends Service implements OnDataProcessingListener,
 		for (int i = 1; i < 33; i++) {
 			vagones[i] = new Vagon(i, defHora); 
 		}
-//		pgru_donde = 1;
-//		pgru_hora = defHora;
-//		pgru_llego = LLEGO;
 		updUI();
 		informar("onCreate", true);
 		timeOut = new TimeOut();
@@ -221,40 +218,59 @@ public class MainService extends Service implements OnDataProcessingListener,
 
 	public void solicitar_Datos() {// Inicia una comunicacion Client-Server si
 									// no hay comunicaciones activas
-		Log.d("Client", "Solicitar Datos");
-		if (comunic == null || !Actualizando
-				&& comunic.estado != comunic.CONNECTED) {
+		Log.d("VCCompostClient", "Solicitar Datos");
+		if (comunic == null ||
+				(!Actualizando && comunic.estado != comunic.CONNECTED) ) {
 			if (comunic != null) {
 				comunic.Detener_Actividad();
 			}
 			comunic = new Comunic(context, serverip, serverport);
+			comunic.edebug = false;
 			comunic.setConnectionListener(new OnConnectionListener() {
 
 				@Override
 				public void onConnectionstablished() {
-					Log.d("Client", "Connection Stablished");
+					Log.d("VCCompostClient", "Connection Stablished");
 					comunic.enviar(EstadoDB());
 				}
 
 				@Override
 				public void onConnectionfinished() {
-					Log.d("Client", "Connection Finished");
+					Log.d("VCCompostClient", "Connection Finished");
 					iniciar_Server();
 				}
 			});
-			// comunic.setComunicationListener(this);
 			comunic.execute();
 		}
 	}
 
 	public void iniciar_Server() {// Inicia un servidor a la espera de conexión
-		Log.d("Server", "Iniciar Server");
+		Log.d("VCCompostServer", "Iniciar Server");
 		comunic = new Comunic(context, serverport);
+		comunic.edebug = false;
+		comunic.setComunicationListener(new OnComunicationListener() {
+			
+			@Override
+			public void onDataReceived(String dato) {
+				tarea += dato;
+				if (dato.endsWith("/")) {
+					timeOut.cancel(true);
+					if (tarea.equals(CONSULTA)) {
+						consultar = true;
+						comunic.Detener_Actividad();
+					} else {
+						consultar = false;
+						procesar(tarea);
+					}
+					tarea = "";
+				}
+			}
+		});
 		comunic.setConnectionListener(new OnConnectionListener() {
 
 			@Override
 			public void onConnectionstablished() {
-				Log.d("Server", "Connection Stablished");
+				Log.d("VCCompostServer", "Connection Stablished");
 				timeOut = new TimeOut();
 				timeOut.setTimeOutListener(new OnTimeOutListener() {
 
@@ -279,9 +295,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 
 			@Override
 			public void onConnectionfinished() {
-				Log.d("Server", "Connection Finished");
-				if(timeOutEnabled)
-					timeOut.cancel(true);
+				Log.d("VCCompostServer", "Connection Finished");
 				if (!Actualizando) {
 					if (consultar) {
 						consultar = false;
@@ -292,23 +306,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 				}
 			}
 		});
-		comunic.setComunicationListener(this);
 		comunic.execute();
-	}
-
-	@Override
-	public void onDataReceived(String dato) {// IL Dato Recibido
-		tarea += dato;
-		if (dato.endsWith("/")) {
-			if (tarea.equals(CONSULTA)) {
-				consultar = true;
-				comunic.Detener_Actividad();
-			} else {
-				consultar = false;
-				procesar(tarea);
-			}
-			tarea = "";
-		}
 	}
 
 	@Override
@@ -325,7 +323,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 			int nvag = procesarDatos.tempvag.nvag;
 			vagones[nvag] = procesarDatos.tempvag;
 			save_file(nvag, procesarDatos.data.getBytes());
-			// LastUpd = procesarDatos.dateSt;
+//			 LastUpd = procesarDatos.dateSt;
 			break;
 		}
 		case GRUA: {
@@ -410,7 +408,7 @@ public class MainService extends Service implements OnDataProcessingListener,
 		if (filen.size() != 0) {
 //			Log.d("load_files",""+filen.size());
 			if (filen.contains("vagon" + nvag)) {
-				// procesar(readFile("vagon" + nvag));
+//				procesar(readFile("vagon" + nvag));
 				procesarDatos = new ProcesarDatos(readFile("vagon" + nvag));
 				procesarDatos.setDataProcessingEndListener(new OnDataProcessingListener() {
 
