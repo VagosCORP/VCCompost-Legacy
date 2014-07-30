@@ -57,6 +57,7 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 	float vY;
 	float width;
 	float height;
+	int nvag = 1;
 	
 	BroadcastReceiver receiver;
 	
@@ -64,7 +65,7 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent info = getIntent();
-		int nvag = info.getIntExtra(NVag, 1);
+		nvag = info.getIntExtra(NVag, nvag);
 		setContentView(R.layout.activity_dat_vag);
 		setTitle("Datos del Vagón "+nvag);
 		sfv_vag = (SurfaceView)findViewById(R.id.sfv_vag);
@@ -231,6 +232,19 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 		thread = new Thread(this);
 		thread.start();
 		super.onResume();
+	}
+	
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.iRoutine: {
+			Intent routine = new Intent(this, Routine.class);
+			routine.putExtra(NVag, nvag);
+			startActivity(routine);
+			break;
+		}
+		}
+		return super.onMenuItemSelected(featureId, item);
 	}
 
 	@Override

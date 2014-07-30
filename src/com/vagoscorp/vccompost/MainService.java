@@ -1,9 +1,12 @@
 package com.vagoscorp.vccompost;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +21,15 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -89,6 +93,12 @@ public class MainService extends Service implements OnDataProcessingListener {
 	TimeOut timeOut;
 	static String text_loaded = "";
 	List<String> filen;
+	File path;
+	File[] fileList;
+	String[] fileNames;
+	
+	boolean SDread = false;
+	boolean SDwrite = false;
 
 	public MainService() {
 		
@@ -134,6 +144,8 @@ public class MainService extends Service implements OnDataProcessingListener {
 		getData();
 		date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.US);
 		context = this;
+		path = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Documents/VCCompost/VagData");
+		path.mkdirs();
 		for (int i = 1; i < 33; i++) {
 			vagones[i] = new Vagon(i, defHora); 
 		}
@@ -395,6 +407,21 @@ public class MainService extends Service implements OnDataProcessingListener {
 		return null;
 	}
 
+	void checkSD() {
+		String state = Environment.getExternalStorageState();
+		if(Environment.MEDIA_MOUNTED.equals(state)) {
+			SDread = true;
+			SDwrite = true;
+		}else if(Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+			SDread = true;
+			SDwrite = false;
+		}else {
+//			oops
+			SDread = false;
+			SDwrite = false;
+		}
+	}
+	
 	public void load_file(int nvag) {// Cargar datos desde archivo
 		filen = getFilenames();
 		if (filen.contains("vagon" + nvag)) {
@@ -403,8 +430,9 @@ public class MainService extends Service implements OnDataProcessingListener {
 	}
 
 	public void load_files(final int nvag) {// Cargar datos desde archivo
-		if(nvag == 1)
+		if(nvag == 1) {
 			filen = getFilenames();
+		}
 		if (filen.size() != 0) {
 //			Log.d("load_files",""+filen.size());
 			if (filen.contains("vagon" + nvag)) {
@@ -460,6 +488,7 @@ public class MainService extends Service implements OnDataProcessingListener {
 	}
 
 	public void save_file(int nvag, byte[] data) {// Guardar Archivo
+		write("Vagon"+nvag, new String(data));
 		try {
 			FileOutputStream fos = openFileOutput("vagon" + nvag, MODE_PRIVATE);
 			fos.write(data);
@@ -513,6 +542,56 @@ public class MainService extends Service implements OnDataProcessingListener {
 			e.printStackTrace();
 		}
 		return value;
+	}
+	
+	void write(String name, String data) {
+		checkSD();
+		if(SDread && SDwrite) {
+			byte[] buff = data.getBytes();
+			File file = new File(path, name + ".vcvd");
+			OutputStream os;
+			try {
+				os = new FileOutputStream(file);
+				os.write(buff);
+				os.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	String read(String name) {
+		checkSD();
+		String val = "";
+		if(SDread) {
+			byte[] buff;
+			File file = new File(path, name + ".vcvd");
+			InputStream is;
+			try {
+				is = new FileInputStream(file);
+				buff = new byte[is.available()];
+				is.read(buff);
+				is.close();
+				val = new String(buff);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return val;
+		
+	}
+	void getNames() {        
+		fileList = path.listFiles();
+		int i = 0;
+		int l = fileList.length;
+		fileNames = new String[l];
+		for(File file:fileList) {
+			fileNames[i] = file.getName().split(".vcvd")[0];
+		}
 	}
 
 	// public void UpdUI(/* String message */) {

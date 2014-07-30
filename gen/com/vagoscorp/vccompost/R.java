@@ -18,6 +18,11 @@ public final class R {
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
+
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
          */
         public static final int activity_horizontal_margin=0x7f070000;
         public static final int activity_vertical_margin=0x7f070001;
@@ -26,24 +31,31 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Act_dat=0x7f090013;
-        public static final int Chan_ser=0x7f090014;
-        public static final int Change=0x7f090011;
+        public static final int Act_dat=0x7f09001a;
+        public static final int Chan_ser=0x7f09001b;
+        public static final int Change=0x7f090017;
         public static final int Label_Ser=0x7f09000c;
         public static final int LinearLayout1=0x7f090000;
-        public static final int Reset_COM=0x7f090016;
-        public static final int SS_LYT=0x7f09000e;
-        public static final int Server_IP=0x7f09000f;
-        public static final int Server_Port=0x7f090010;
+        public static final int Reset_COM=0x7f09001d;
+        public static final int SS_LYT=0x7f090014;
+        public static final int Server_IP=0x7f090015;
+        public static final int Server_Port=0x7f090016;
         public static final int TableLayout1=0x7f090003;
-        public static final int action_settings=0x7f090012;
+        public static final int action_settings=0x7f090018;
         public static final int hora=0x7f09000b;
         public static final int horaJab=0x7f090004;
+        public static final int iRoutine=0x7f090019;
         public static final int llegoGru=0x7f09000a;
-        public static final int load_file=0x7f090015;
+        public static final int load_file=0x7f09001c;
         public static final int posGru=0x7f090009;
+        public static final int ptextA=0x7f090010;
+        public static final int ptextB=0x7f090012;
+        public static final int reactorA=0x7f09000e;
+        public static final int reactorB=0x7f09000f;
         public static final int sfv_jab=0x7f090002;
         public static final int sfv_vag=0x7f090001;
+        public static final int spinnerA=0x7f090011;
+        public static final int spinnerB=0x7f090013;
         public static final int surfaceGrua=0x7f09000d;
         public static final int temp1Jab=0x7f090005;
         public static final int temp2Jab=0x7f090006;
@@ -53,12 +65,13 @@ public final class R {
     public static final class layout {
         public static final int activity_dat_vag=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int set_server=0x7f030002;
-        public static final int sf=0x7f030003;
+        public static final int activity_routine=0x7f030002;
+        public static final int activity_set_server=0x7f030003;
     }
     public static final class menu {
         public static final int dat_vag=0x7f080000;
         public static final int main=0x7f080001;
+        public static final int routine=0x7f080002;
     }
     public static final class string {
         public static final int A_Dat=0x7f050011;
@@ -68,6 +81,8 @@ public final class R {
         public static final int Load_Data=0x7f050013;
         public static final int OK=0x7f05000c;
         public static final int Reset_Comunication=0x7f050015;
+        public static final int SeccionA=0x7f050018;
+        public static final int SeccionB=0x7f050019;
         public static final int Ser_Dat=0x7f050010;
         public static final int Server_IP=0x7f05000a;
         public static final int Server_Port=0x7f05000b;
@@ -81,8 +96,10 @@ public final class R {
         public static final int gru_hora=0x7f05000f;
         public static final int gru_llego=0x7f05000e;
         public static final int hello_world=0x7f050002;
+        public static final int routine=0x7f050017;
         public static final int set_server=0x7f050003;
         public static final int title_activity_dat_vag=0x7f050004;
+        public static final int title_activity_routine=0x7f050016;
     }
     public static final class style {
         /** 

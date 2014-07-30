@@ -19,7 +19,7 @@ public class Set_Server extends Activity {
 		Intent Data = getIntent();
 		IP = Data.getStringExtra(MainService.SI);
 		Port = Data.getIntExtra(MainService.SP, MainService.defPort);
-		setContentView(R.layout.set_server);
+		setContentView(R.layout.activity_set_server);
 		Server_IP = (EditText) findViewById(R.id.Server_IP);
 		Server_Port = (EditText) findViewById(R.id.Server_Port);
 	}
