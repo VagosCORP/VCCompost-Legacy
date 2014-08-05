@@ -27,5 +27,11 @@
     <string name="routine">Crear Rutina de Mezclado</string>
     <string name="SeccionA">SeccionA</string>
     <string name="SeccionB">SeccionB</string>
+    <string name="Ejecutar">Ejecutar Rutinas</string>
+    <string name="PuntoIn">Punto de Ingreso</string>
+    <string name="PuntoOut">Punto de Salida</string>
+    <string name="EspejoAB">Espejo A -> B</string>
+    <string name="GuardarRutina">Guardar Rutina</string>
+    <string name="title_activity_save_rfiles">Guardar Rutinas</string>
 
 </resources>

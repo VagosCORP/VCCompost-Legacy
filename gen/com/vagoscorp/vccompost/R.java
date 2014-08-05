@@ -31,55 +31,71 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Act_dat=0x7f09001a;
-        public static final int Chan_ser=0x7f09001b;
-        public static final int Change=0x7f090017;
+        public static final int Act_dat=0x7f090023;
+        public static final int Chan_ser=0x7f090024;
+        public static final int Change=0x7f090020;
         public static final int Label_Ser=0x7f09000c;
         public static final int LinearLayout1=0x7f090000;
-        public static final int Reset_COM=0x7f09001d;
-        public static final int SS_LYT=0x7f090014;
-        public static final int Server_IP=0x7f090015;
-        public static final int Server_Port=0x7f090016;
+        public static final int Reset_COM=0x7f090026;
+        public static final int SS_LYT=0x7f09001d;
+        public static final int Server_IP=0x7f09001e;
+        public static final int Server_Port=0x7f09001f;
         public static final int TableLayout1=0x7f090003;
-        public static final int action_settings=0x7f090018;
+        public static final int action_settings=0x7f090021;
+        public static final int button1=0x7f09001c;
+        public static final int espejo=0x7f090015;
         public static final int hora=0x7f09000b;
         public static final int horaJab=0x7f090004;
-        public static final int iRoutine=0x7f090019;
+        public static final int iRoutine=0x7f090022;
+        public static final int intercamb=0x7f09000f;
         public static final int llegoGru=0x7f09000a;
-        public static final int load_file=0x7f09001c;
+        public static final int load_file=0x7f090025;
+        public static final int nRutina=0x7f090018;
+        public static final int nombre=0x7f090016;
+        public static final int nombredc=0x7f09001b;
         public static final int posGru=0x7f090009;
-        public static final int ptextA=0x7f090010;
-        public static final int ptextB=0x7f090012;
+        public static final int ptextA=0x7f090011;
+        public static final int ptextB=0x7f090013;
         public static final int reactorA=0x7f09000e;
-        public static final int reactorB=0x7f09000f;
+        public static final int reactorB=0x7f090010;
+        public static final int save=0x7f090017;
         public static final int sfv_jab=0x7f090002;
         public static final int sfv_vag=0x7f090001;
-        public static final int spinnerA=0x7f090011;
-        public static final int spinnerB=0x7f090013;
+        public static final int spinnerA=0x7f090012;
+        public static final int spinnerB=0x7f090014;
         public static final int surfaceGrua=0x7f09000d;
         public static final int temp1Jab=0x7f090005;
         public static final int temp2Jab=0x7f090006;
         public static final int temp3Jab=0x7f090007;
         public static final int temp4Jab=0x7f090008;
+        public static final int textView1=0x7f090019;
+        public static final int textView2=0x7f09001a;
     }
     public static final class layout {
         public static final int activity_dat_vag=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_routine=0x7f030002;
-        public static final int activity_set_server=0x7f030003;
+        public static final int activity_save_rfiles=0x7f030003;
+        public static final int activity_set_server=0x7f030004;
     }
     public static final class menu {
         public static final int dat_vag=0x7f080000;
         public static final int main=0x7f080001;
         public static final int routine=0x7f080002;
+        public static final int save_rfiles=0x7f080003;
     }
     public static final class string {
         public static final int A_Dat=0x7f050011;
         public static final int C_Server=0x7f050012;
+        public static final int Ejecutar=0x7f05001a;
         public static final int Erase_Data=0x7f050014;
+        public static final int EspejoAB=0x7f05001d;
+        public static final int GuardarRutina=0x7f05001e;
         public static final int Hora=0x7f050005;
         public static final int Load_Data=0x7f050013;
         public static final int OK=0x7f05000c;
+        public static final int PuntoIn=0x7f05001b;
+        public static final int PuntoOut=0x7f05001c;
         public static final int Reset_Comunication=0x7f050015;
         public static final int SeccionA=0x7f050018;
         public static final int SeccionB=0x7f050019;
@@ -100,6 +116,7 @@ public final class R {
         public static final int set_server=0x7f050003;
         public static final int title_activity_dat_vag=0x7f050004;
         public static final int title_activity_routine=0x7f050016;
+        public static final int title_activity_save_rfiles=0x7f05001f;
     }
     public static final class style {
         /** 

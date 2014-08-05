@@ -49,6 +49,7 @@ public class MainService extends Service implements OnDataProcessingListener {
 	public static final int SERVER_CHANGED = 105;
 	public static final int RESET_COM = 107;
 	public static final int LOAD_FILE = 106;
+	public static final int EJECUTAR_RUTINA = 108;
 	public static final int FRIO = 1;
 	public static final int BUENO = 2;
 	public static final int TIBIO = 3;
@@ -65,6 +66,8 @@ public class MainService extends Service implements OnDataProcessingListener {
 	public static final String SPname = "com.vagoscorp.vccompost";
 	public static final String DATA_UPDATE = "Data_Upd";
 	public static final String Dato = "dato";
+	public static final String textA = "textA";
+	public static final String textB = "textB";
 	final String CONSULTA = "T%/";
 	static final String LLEGO = "Grúa en el Vagón";
 	final String EN_CAMINO = "Grúa en Camino desde el vagón ";
@@ -183,6 +186,13 @@ public class MainService extends Service implements OnDataProcessingListener {
 				notificacion(this, "Servicio en Ejecución", false);
 				break;
 			}
+			case EJECUTAR_RUTINA: {
+				informar("Ejecutar Rutina", false);
+				String txtA = intent.getStringExtra(textA);
+				String txtB = intent.getStringExtra(textB);
+				Ejecutar_Rutina(txtA, txtB);
+				break;
+			}
 			// case APP_DESTRUIDA: {
 			// informar("APP_DESTRUIDA");
 			//
@@ -249,6 +259,35 @@ public class MainService extends Service implements OnDataProcessingListener {
 				@Override
 				public void onConnectionfinished() {
 					Log.d("VCCompostClient", "Connection Finished");
+					iniciar_Server();
+				}
+			});
+			comunic.execute();
+		}
+	}
+	
+	public void Ejecutar_Rutina(final String tA, final String tB) {// Inicia una comunicacion Client-Server si
+		// no hay comunicaciones activas
+		Log.d("VCCompostClient", "Ejecutar Rutina");
+		if (comunic == null
+				|| (!Actualizando && comunic.estado != comunic.CONNECTED)) {
+			if (comunic != null) {
+				comunic.Detener_Actividad();
+			}
+			comunic = new Comunic(context, serverip, 2002);
+			comunic.edebug = false;
+			comunic.setConnectionListener(new OnConnectionListener() {
+
+				@Override
+				public void onConnectionstablished() {
+					Log.d("Ejecutar Rutina", "Connection Stablished");
+					comunic.enviar(tA + tB + "P");
+					comunic.Detener_Actividad();
+				}
+
+				@Override
+				public void onConnectionfinished() {
+					Log.d("Ejecutar Rutina", "Connection Finished");
 					iniciar_Server();
 				}
 			});
