@@ -90,6 +90,10 @@ public final class R {
         public static final int Ejecutar=0x7f05001a;
         public static final int Erase_Data=0x7f050014;
         public static final int EspejoAB=0x7f05001d;
+        public static final int FileNames=0x7f050023;
+        public static final int FileNamesH=0x7f050024;
+        public static final int FileSA=0x7f050020;
+        public static final int FileSB=0x7f050021;
         public static final int GuardarRutina=0x7f05001e;
         public static final int Hora=0x7f050005;
         public static final int Load_Data=0x7f050013;
@@ -97,6 +101,7 @@ public final class R {
         public static final int PuntoIn=0x7f05001b;
         public static final int PuntoOut=0x7f05001c;
         public static final int Reset_Comunication=0x7f050015;
+        public static final int RnameH=0x7f050022;
         public static final int SeccionA=0x7f050018;
         public static final int SeccionB=0x7f050019;
         public static final int Ser_Dat=0x7f050010;

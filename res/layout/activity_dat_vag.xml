@@ -14,13 +14,14 @@
         android:id="@+id/sfv_vag"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="17" />
+        android:layout_weight="20" />
 
     <SurfaceView
         android:id="@+id/sfv_jab"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3" />
+        android:layout_weight="3"
+        android:visibility="gone" />
 
     <TableLayout
         android:id="@+id/TableLayout1"

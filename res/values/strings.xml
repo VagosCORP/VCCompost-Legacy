@@ -33,5 +33,10 @@
     <string name="EspejoAB">Espejo A -> B</string>
     <string name="GuardarRutina">Guardar Rutina</string>
     <string name="title_activity_save_rfiles">Guardar Rutinas</string>
+    <string name="FileSA">Archivo Seccion A</string>
+    <string name="FileSB">Archivo Seccion B</string>
+    <string name="RnameH">Nombre Rutina</string>
+    <string name="FileNames">Nombre para los Archivos?</string>
+    <string name="FileNamesH">nombre => nombreA, nombreB</string>
 
 </resources>
