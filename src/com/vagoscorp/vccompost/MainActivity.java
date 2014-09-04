@@ -67,6 +67,8 @@ public class MainActivity extends Activity implements Runnable, OnTouchListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		overridePendingTransition(R.animator.slide_in_right,
+				R.animator.slide_out_left);
 		super.onCreate(savedInstanceState);
 		getServerData();
 		setContentView(R.layout.activity_main);
@@ -433,7 +435,7 @@ public class MainActivity extends Activity implements Runnable, OnTouchListener,
 	}
 	
 	public Paint colorSelec(int stvag) {
-		Paint result = null;;
+		Paint result = null;
 		switch(stvag) {
 		case MainService.FRIO:{
 			result = frio;
@@ -466,7 +468,6 @@ public class MainActivity extends Activity implements Runnable, OnTouchListener,
 	public boolean onTouch(View v, MotionEvent event) {
 		x = event.getX();
 		y = event.getY();
-//		sel_Vag(20);
 		return false;
 	}
 

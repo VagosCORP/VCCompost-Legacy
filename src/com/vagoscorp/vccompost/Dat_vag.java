@@ -146,9 +146,9 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 	public void run() {
 		boolean jya = false;
 		while(runn) {
-			if(!vagHolder.getSurface().isValid() || !jabHolder.getSurface().isValid())
+			if(!vagHolder.getSurface().isValid())
 				continue;
-			if(!jya) {
+			if(!jya && jabHolder.getSurface().isValid()) {
 				jya = true;
 				jabcanvas = jabHolder.lockCanvas();
 				int jabx = jabcanvas.getWidth()/2;
@@ -163,11 +163,11 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 				jabHolder.unlockCanvasAndPost(jabcanvas);
 			}
 			canvas = vagHolder.lockCanvas();
-			//canvas.drawColor(Color.GREEN);
+//			canvas.drawColor(Color.GREEN);
 			width = canvas.getWidth();
 			height = canvas.getHeight();
 			canvas.drawARGB(255, 100, 180, 100);
-			//canvas.drawBitmap(hojas, 0, 0, null);
+//			canvas.drawBitmap(hojas, 0, 0, null);
 			vX = (float)width/1000;
 			vY = (float)height/1000;
 			int c = 0;
@@ -241,6 +241,8 @@ public class Dat_vag extends Activity implements Runnable,OnTouchListener {
 			Intent routine = new Intent(this, Routine.class);
 			routine.putExtra(NVag, nvag);
 			startActivity(routine);
+			overridePendingTransition(R.animator.slide_in_right,
+					R.animator.slide_out_left);
 			break;
 		}
 		}

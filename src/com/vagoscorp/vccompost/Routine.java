@@ -717,16 +717,34 @@ public class Routine extends Activity implements Runnable {
 		return true;
 	}
 
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		finish();
+		overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
+		super.onBackPressed();
 	}
 
 	class Coord {
